@@ -88,13 +88,45 @@ def consulta_cuentas(Rcuentas, veccuentas):
 
 
 def ABM_cuetnas():
-    a1 = open('cuentas.txt')
+    a_read = open('cuentas.txt', 'r')
+    a_append = open('cuentas.txt', 'a')
+    numero_cuenta = 0
+    linea = a_read.readline().strip()
+    s = linea.split(',')
+    while linea != "":
+       
+        s = linea.split(',')
+        numero_cuenta = int(s[0])+1
+        linea = a_read.readline().strip() 
+    apellido = str(input('ingrese su apellido '))
+    nombre = str(input(' ingrese su nombre '))
+    dni = str(input('ingrese su DNI: '))
+    tipo_cuenta = str(input('ingrese el tipo de cuenta: '))
+    saldo = str(input('saldo'))
+    activa = 'TRUE'
+    a_append.write(str(numero_cuenta))
+    a_append.write(',')
+    a_append.write(apellido)
+    a_append.write(',')
+    a_append.write(nombre)
+    a_append.write(',')
+    a_append.write(tipo_cuenta)
+    a_append.write(', ')
+    a_append.write(saldo)
+    a_append.write(',')
+    a_append.write(activa)
+    a_append.write(',')
+    a_append.write('\n')
+
+
+
+    
 Rcajeros = pyrecord.Record.create_type('Rcajeros','numero_cajero', 'ubicacion','cant_mov',numero_cajero = 0, ubicacion = "", cant_mov = 0)
 veccajeros = [Rcajeros] * 120
 Rcuentas = pyrecord.Record.create_type('Rcuentas','numero_cuenta','apellido','nombre','DNI','tipo_cuenta','saldo','activa',numero_cuenta = 0,apellido = "",nombre = "", DNI = 0 , tipo_cuenta = 0,saldo = 0.0,activa = bool)
 veccuentas = [Rcuentas] *600
 
-
+ABM_cuetnas()
 
 
 
